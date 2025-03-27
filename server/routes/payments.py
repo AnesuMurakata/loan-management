@@ -1,11 +1,9 @@
 import datetime
+from data.loan_payments import loan_payments
 from flask import Blueprint, request, jsonify
 
 # Define Blueprint
 payments_bp = Blueprint("payments", __name__)
-
-# In-memory storage for demo purposes
-loan_payments = []
 
 @payments_bp.route("/payments", methods=["POST"])
 def add_payment():
