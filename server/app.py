@@ -1,5 +1,5 @@
 import datetime
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_graphql import GraphQLView
 from flask_cors import CORS
 import graphene
@@ -94,6 +94,30 @@ app.add_url_rule(
 def home():
     return "Welcome to the Loan Application API"
 
+@app.route("/payments", methods=["POST"])
+def add_payment():
+    # Get the JSON data from the request
+    new_payment = request.json
+
+    # Validate the incoming payment data
+    if not new_payment or 'loan_id' not in new_payment:
+        return jsonify({"error": "Invalid payment data"}), 400
+
+    # Generate following ID 
+    new_id = len(loan_payments) + 1
+
+    # Create the full payment object
+    payment_to_add = {
+        "id": new_id,
+        "loan_id": new_payment['loan_id'],
+        "payment_date": datetime.date.today()
+    }
+
+    # Add the new payment to the list
+    loan_payments.append(payment_to_add)
+
+    # Return the added payment with 201 Created status
+    return jsonify(payment_to_add), 201
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
