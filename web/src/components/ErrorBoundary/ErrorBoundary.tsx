@@ -1,6 +1,7 @@
 import React, { ErrorInfo } from "react";
 import "./ErrorBoundary.scss";
 
+// Define types
 interface ErrorBoundaryState {
   hasError: boolean;
   error: Error | null;
@@ -11,6 +12,7 @@ interface ErrorBoundaryProps {
   children: React.ReactNode;
 }
 
+// Display this component instead of having a blank screen
 class ErrorBoundary extends React.Component<
   ErrorBoundaryProps,
   ErrorBoundaryState

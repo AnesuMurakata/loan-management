@@ -88,6 +88,7 @@ const LoansList = () => {
   };
 
   // Process loans when data changes
+  // useMemo instead of useEffect as its more efficient
   const processedLoans = useMemo(() => {
     if (data?.loans) {
       return processLoanData(data.loans);
