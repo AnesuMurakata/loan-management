@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { PulseLoader } from "react-spinners";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddNewPayment = () => {
   const [submittingData, setSubmittingData] = useState<boolean>(false);
@@ -13,23 +14,27 @@ const AddNewPayment = () => {
     setSubmittingData(true);
     axios({
       method: "POST",
-      url: "http://localhost:2024/payments",
+      url: "http://localhost:2024/paymens",
       data: { loan_id: paymentLoanId, amount: paymentAmount },
     })
       .then(() => {
         //Handle success
-        console.log("Zvaita");
         setSubmittingData(false);
       })
       .catch(() => {
         // Handle error
-        console.log("Zvaramba");
+        toast.error("Oh no, something went wrong :(", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+        });
         setSubmittingData(false);
       });
   };
 
   return (
     <div>
+      <ToastContainer />
       <h1>Add New Payment</h1>
       {submittingData && <PulseLoader color='#fff' />}
       <form onSubmit={submitPayment}>

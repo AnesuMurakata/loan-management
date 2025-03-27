@@ -95,6 +95,7 @@ const LoansList = () => {
     return [];
   }, [data]);
 
+  // Feedback & error handling
   if (loading) return <PulseLoader color='#fff' />;
   if (error) return <p>Error loading loans: {error.message}</p>;
 
