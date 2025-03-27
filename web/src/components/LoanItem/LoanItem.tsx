@@ -4,6 +4,7 @@ import card from "../../assets/components/LoanItem/card.png";
 import calendar from "../../assets/components/LoanItem/calendar.png";
 import money from "../../assets/components/LoanItem/dollar-symbol.png";
 
+// Define types
 interface ILoanPayment {
   name: string;
   interestRate: number;
@@ -13,6 +14,7 @@ interface ILoanPayment {
   status: string;
 }
 
+// Reusable loan item component
 const LoanItem = ({
   name,
   principal,
