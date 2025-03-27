@@ -1,0 +1,33 @@
+@use "../../styles/mixins.scss" as mixins;
+
+.landing-page-container {
+  width: 100%;
+  min-height: 100vh;
+
+  &__tabs-navigation {
+    @include mixins.flexRow;
+
+    &__tab-button {
+      background-color: transparent;
+      margin-right: 12px;
+      padding: 6px 12px;
+      font-size: 24px;
+      font-weight: bold;
+
+      &--active {
+        color: rgb(95, 95, 243);
+        border-bottom: solid 2px rgb(95, 95, 243);
+      }
+    }
+
+    &__tab-button:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__tabs-container {
+    width: 60%;
+    margin: auto;
+    margin-top: 26px;
+  }
+}
