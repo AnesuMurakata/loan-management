@@ -1,23 +1,5 @@
 import "./App.css";
-import LoanItem from "./components/LoanItem/LoanItem";
-
-interface ILoanPayment {
-  name: string;
-  interestRate: number;
-  principal: number;
-  dueDate: string;
-  paymentDate: string | null;
-  status: string;
-}
-
-const dummyData: ILoanPayment = {
-  name: "John",
-  interestRate: 3,
-  principal: 20000,
-  dueDate: "2025-03-01",
-  paymentDate: "2025-03-05",
-  status: "On Time",
-};
+import LoansList from "./components/LoansList/LoansList";
 
 const AddNewPayment = () => {
   return (
@@ -50,14 +32,7 @@ function App() {
       <div>
         <h1>Existing Loans & Payments</h1>
         <ul></ul>
-        <LoanItem
-          name={dummyData.name}
-          interestRate={dummyData.interestRate}
-          principal={dummyData.principal}
-          dueDate={dummyData.dueDate}
-          paymentDate={dummyData.paymentDate}
-          status={dummyData.status}
-        />
+        <LoansList />
 
         <h1>Add New Payment</h1>
         <AddNewPayment />
