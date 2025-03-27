@@ -3,6 +3,7 @@ FROM python:${PYTHON_VERSION}-slim as base
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
 WORKDIR /app
 
@@ -26,4 +27,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD python app.py --port 5000
+CMD python -m app --port 5000
