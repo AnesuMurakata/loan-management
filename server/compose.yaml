@@ -6,3 +6,7 @@ services:
       context: .
     ports:
       - 2024:5000
+
+  test:
+    build: .
+    command: ["pytest", "tests/"]

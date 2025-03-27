@@ -14,7 +14,7 @@ const AddNewPayment = () => {
     setSubmittingData(true);
     axios({
       method: "POST",
-      url: "http://localhost:2024/paymens",
+      url: "http://localhost:2024/payments",
       data: { loan_id: paymentLoanId, amount: paymentAmount },
     })
       .then(() => {
