@@ -8,13 +8,15 @@ const AddNewPayment = () => {
   const [paymentLoanId, setPaymentLoanId] = useState<number | null>(null);
   const [paymentAmount, setPaymentAmount] = useState<number | null>(null);
 
+  const apiEndpoint = import.meta.env.VITE_BACKEND_URL;
+
   const submitPayment = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Give user feedback that form is being submitted
     setSubmittingData(true);
     axios({
       method: "POST",
-      url: "http://localhost:2024/payments",
+      url: apiEndpoint + "payments",
       data: { loan_id: paymentLoanId, amount: paymentAmount },
     })
       .then(() => {
