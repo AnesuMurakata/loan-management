@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./AddPayment.scss";
 import { useState } from "react";
 import { PulseLoader } from "react-spinners";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,6 +9,7 @@ const AddNewPayment = () => {
   const [paymentLoanId, setPaymentLoanId] = useState<number | null>(null);
   const [paymentAmount, setPaymentAmount] = useState<number | null>(null);
 
+  // use env var for backend url to make it easier to switch between backends eg staging & prod
   const apiEndpoint = import.meta.env.VITE_BACKEND_URL;
 
   const submitPayment = (e: React.FormEvent<HTMLFormElement>) => {
